@@ -1,4 +1,5 @@
 use std::env;
+use std::fs;
 use std::io::Write;
 use std::io;
 
@@ -11,6 +12,11 @@ fn main() {
     } else if args.len() == 1 {
         run_prompt();
     }
+}
+
+#[allow(dead_code)]
+fn run_file(path: &str) {
+    let _ = fs::read_to_string(path).expect("Error while reading the file");
 }
 
 fn run_prompt() {
@@ -29,4 +35,18 @@ fn run_prompt() {
 
         println!("{}", line)
     }
+}
+
+#[allow(dead_code)]
+fn run(_: &str) -> bool {
+  return false;
+}
+
+#[allow(dead_code)]
+fn error(line: i32, msg: &str) {
+    report(line, "", msg);
+}
+
+fn report(line: i32, loc: &str, msg: &str) {
+    println!("[line {}] Error {}: {}", line, loc, msg);
 }
