@@ -3,6 +3,8 @@ use std::fs;
 use std::io::Write;
 use std::io;
 
+mod scanner;
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -33,6 +35,10 @@ fn run_prompt() {
             break;
         }
 
+				let mut scan = scanner::scanner::Scanner::new(&line);
+				scan.scan_tokens();
+
+				println!("{:?}", scan.tokens);
         println!("{}", line)
     }
 }

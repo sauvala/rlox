@@ -2,10 +2,11 @@ use std::fmt;
 
 use super::token_type::TokenType;
 
+#[derive(Debug)]
 pub struct Token {
-		token_type: TokenType,
-		lexeme: String,
-		line: i32,
+		pub token_type: TokenType,
+		pub lexeme: String,
+		pub line: i32,
 }
 
 impl fmt::Display for Token {
